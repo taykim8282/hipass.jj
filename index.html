@@ -1,5 +1,5 @@
 
-<h2 class="sr-only">하이패스 카드 관리 시스템</h2>
+<h2 class="sr-only">하이패스 카드 관리 시스템 v7 — 서울팀원 수정, 주소postMessage 수정, 설정탭 버튼 개선</h2>
 <style>
 :root{
   --white:#fff;--bg-page:#f0f3fa;--bg-soft:#f6f8fd;
@@ -29,7 +29,6 @@
 .content{padding:18px 20px}
 .section{display:none}.section.active{display:block}
 
-/* stat */
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .stat-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--sh);position:relative;overflow:hidden}
 .stat-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
@@ -39,7 +38,6 @@
 .stat-val{font-size:28px;font-weight:700;line-height:1}
 .stat-val.c-blue{color:var(--blue)}.stat-val.c-amber{color:var(--amber)}.stat-val.c-teal{color:var(--teal)}.stat-val.c-purple{color:var(--purple)}
 
-/* office blocks */
 .office-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .office-block{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
 .office-hdr{padding:10px 16px;font-size:12px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:7px;text-transform:uppercase}
@@ -47,7 +45,6 @@
 .office-hdr.se{background:linear-gradient(90deg,var(--blue-lt),var(--white));color:var(--blue);border-bottom:1.5px solid var(--blue-md)}
 .card-grid-area{padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px;min-height:58px}
 
-/* hipass card tile */
 .hcard{border-radius:8px;padding:10px 10px 8px;position:relative;cursor:default;min-height:72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .hcard::after{content:'';position:absolute;top:-18px;right:-18px;width:52px;height:52px;border-radius:50%;opacity:.18}
 .hcard.av-bs{background:linear-gradient(135deg,#0ea882,#06c997);box-shadow:0 3px 10px rgba(14,168,130,.30)}
@@ -72,7 +69,6 @@
 .av-bs .hcard-pill,.av-se .hcard-pill{background:rgba(255,255,255,.25);color:rgba(255,255,255,.9)}
 .used .hcard-pill{background:#dc2626;color:#fff}
 
-/* tables */
 .tbl-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:14px}
 table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
 th{text-align:left;padding:9px 12px;color:var(--txt3);font-weight:600;border-bottom:1.5px solid var(--border);font-size:11px;letter-spacing:.05em;background:var(--bg-soft)}
@@ -80,7 +76,6 @@ td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--txt);verti
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--bg-soft)}
 
-/* badges */
 .badge{display:inline-block;padding:3px 8px;border-radius:var(--r-xs);font-size:11px;font-weight:600;border:1px solid transparent}
 .badge.out{background:var(--purple-lt);color:var(--purple);border-color:var(--purple-md)}
 .badge.in{background:var(--green-lt);color:var(--green);border-color:var(--green-md)}
@@ -90,16 +85,13 @@ tr:hover td{background:var(--bg-soft)}
 .badge.warn{background:var(--amber-lt);color:var(--amber);border-color:var(--amber-md)}
 .badge.err{background:var(--red-lt);color:var(--red);border-color:var(--red-md)}
 
-/* panels */
 .panel{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:14px}
 .panel-hdr{padding:12px 18px;font-size:12px;font-weight:700;letter-spacing:.04em;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:8px}
 .ph-out{background:linear-gradient(90deg,var(--purple-lt),var(--white));color:var(--purple)}
 .ph-ret{background:linear-gradient(90deg,var(--green-lt),var(--white));color:var(--green)}
-.ph-def{background:var(--bg-soft);color:var(--txt2)}
 .panel-body{padding:16px 18px}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-/* form */
 .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
 .fg label{font-size:11px;font-weight:700;color:var(--txt2);letter-spacing:.04em;text-transform:uppercase}
 input[type=text],input[type=date],input[type=number],input[type=password],input[type=month],select,textarea{
@@ -112,28 +104,35 @@ textarea{resize:vertical;min-height:50px}
 .date-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .date-pair .fg{margin-bottom:0}
 
-/* ── custom member select ── */
-.member-select-wrap{position:relative}
-.member-select-display{width:100%;padding:8px 32px 8px 11px;background:var(--white);border:1.5px solid var(--border-strong);border-radius:var(--r-sm);font-size:13px;color:var(--txt);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;user-select:none}
-.member-select-display:hover{border-color:var(--blue)}
-.member-select-display .arrow{color:var(--txt3);font-size:12px;flex-shrink:0;transition:transform .15s}
-.member-select-display.open .arrow{transform:rotate(180deg)}
-.member-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--white);border:1.5px solid var(--border-strong);border-radius:var(--r-sm);box-shadow:var(--sh-md);z-index:500;overflow:hidden;max-height:260px;overflow-y:auto}
-.member-dropdown.open{display:block}
-.member-group-label{padding:7px 12px 5px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:6px;position:sticky;top:0;z-index:1}
-.member-group-label.gl-bs{background:var(--teal)}
-.member-group-label.gl-se{background:var(--blue)}
-.member-option{padding:8px 14px;font-size:13px;color:var(--txt);cursor:pointer;transition:background .1s}
-.member-option:hover{background:var(--bg-soft)}
-.member-option.selected{background:var(--blue-lt);color:var(--blue);font-weight:600}
+/* member custom dropdown */
+.member-wrap{position:relative}
+.member-display{width:100%;padding:8px 32px 8px 11px;background:var(--white);border:1.5px solid var(--border-strong);border-radius:var(--r-sm);font-size:13px;color:var(--txt3);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:border-color .15s}
+.member-display:hover,.member-display.open{border-color:var(--blue)}
+.member-display .chev{color:var(--txt3);font-size:12px;flex-shrink:0;transition:transform .15s}
+.member-display.open .chev{transform:rotate(180deg)}
+.member-dd{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--white);border:1.5px solid var(--border-strong);border-radius:var(--r-sm);box-shadow:var(--sh-md);z-index:500;overflow:hidden;max-height:260px;overflow-y:auto}
+.member-dd.open{display:block}
+.grp-hdr{padding:7px 12px 5px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:6px;position:sticky;top:0;z-index:1}
+.grp-hdr.g-bs{background:var(--teal)}
+.grp-hdr.g-se{background:var(--blue)}
+.m-opt{padding:8px 14px;font-size:13px;color:var(--txt);cursor:pointer;transition:background .1s}
+.m-opt:hover{background:var(--bg-soft)}
+.m-opt.sel{background:var(--blue-lt);color:var(--blue);font-weight:600}
 
 /* address */
 .addr-row{display:flex;gap:6px;align-items:stretch}
 .addr-row input{flex:1}
-.addr-row .addr-btn{flex-shrink:0;padding:8px 12px;border-radius:var(--r-sm);font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-family:var(--font-sans);display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:background .12s}
-.addr-row .addr-btn:hover{background:#2a5ae0;border-color:#2a5ae0}
+.addr-btn{flex-shrink:0;padding:0 14px;height:38px;border-radius:var(--r-sm);font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-family:var(--font-sans);display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:background .12s}
+.addr-btn:hover{background:#2a5ae0;border-color:#2a5ae0}
 
-/* office toggle */
+/* kakao overlay — in-flow, not fixed */
+.overlay-wrap{position:relative}
+.addr-overlay{display:none;position:absolute;top:0;left:0;right:0;min-height:460px;background:rgba(0,0,0,.45);z-index:9000;padding:24px 16px;align-items:flex-start;justify-content:center}
+.addr-overlay.open{display:flex}
+.overlay-box{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-md);width:100%;max-width:500px}
+.overlay-hdr{padding:10px 14px;background:var(--bg-soft);border-bottom:1.5px solid var(--border);font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.overlay-hdr span{color:var(--blue)}
+
 .otgl{display:flex;border:1.5px solid var(--border-strong);border-radius:var(--r-sm);overflow:hidden}
 .otgl button{flex:1;padding:7px 6px;border:none;background:var(--white);color:var(--txt2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-sans);transition:all .12s}
 .otgl button.a-bs{background:var(--teal-lt);color:var(--teal)}
@@ -144,8 +143,12 @@ textarea{resize:vertical;min-height:50px}
 .btn:hover{background:var(--bg-soft)}
 .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.primary:hover{background:#2a5ae0}
 .btn.success{background:var(--teal);color:#fff;border-color:var(--teal)}.btn.success:hover{background:#0c8f6e}
-.btn.danger{color:var(--red);border-color:var(--red-md);background:var(--red-lt)}.btn.danger:hover{background:#fde8e8}
-.btn.neutral{color:var(--txt2);border-color:var(--border-strong);background:var(--white)}.btn.neutral:hover{background:var(--bg-soft)}
+.btn.neutral{color:var(--txt2);border-color:var(--border-strong)}.btn.neutral:hover{background:var(--bg-soft)}
+/* 설정탭 전용 액션 버튼 */
+.act-switch{padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;border-radius:var(--r-xs);border:1.5px solid var(--border-strong);background:var(--bg-soft);color:var(--txt2);font-family:var(--font-sans);display:inline-flex;align-items:center;gap:4px;transition:all .12s;white-space:nowrap}
+.act-switch:hover{background:var(--blue-lt);color:var(--blue);border-color:var(--blue-md)}
+.act-del{padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;border-radius:var(--r-xs);border:1.5px solid var(--red-md);background:var(--red-lt);color:var(--red);font-family:var(--font-sans);display:inline-flex;align-items:center;gap:4px;transition:all .12s;white-space:nowrap}
+.act-del:hover{background:#fde8e8}
 .btn.sm{padding:5px 10px;font-size:11px}
 
 .sec-title{font-size:11px;font-weight:700;color:var(--txt3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px}
@@ -153,16 +156,16 @@ textarea{resize:vertical;min-height:50px}
 .ret-info{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:11px 13px;font-size:12px;color:var(--txt2);margin-bottom:12px;min-height:62px}
 .empty{text-align:center;padding:2rem;color:var(--txt3);font-size:13px}
 
-/* ── settings card grid ── */
-.settings-card-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm)}
-.settings-card-item .card-info{display:flex;align-items:center;gap:8px}
-.settings-card-item .card-actions{display:flex;gap:6px}
+/* settings card item */
+.sc-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);gap:8px}
+.sc-info{display:flex;align-items:center;gap:8px;min-width:0}
+.sc-actions{display:flex;gap:6px;flex-shrink:0}
 
-/* ── settings member grid ── */
-.mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
-.mem-item{display:flex;align-items:center;justify-content:space-between;padding:8px 11px;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-weight:500;gap:8px}
-.mem-item .mem-info{display:flex;align-items:center;gap:7px;overflow:hidden}
-.mem-item .mem-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* settings member item */
+.mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}
+.mem-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:12px;gap:6px}
+.mem-info{display:flex;align-items:center;gap:6px;overflow:hidden}
+.mem-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
 
 /* setup */
 .setup-wrap{max-width:460px;margin:2rem auto}
@@ -172,15 +175,15 @@ textarea{resize:vertical;min-height:50px}
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg-soft)}::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
 </style>
 
-<!-- 카카오 주소 overlay -->
-<div style="position:relative">
-<div id="addr-overlay" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:9000;min-height:450px;align-items:flex-start;justify-content:center;padding-top:30px">
-  <div style="background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-md);width:100%;max-width:480px">
-    <div style="padding:10px 14px;background:var(--bg-soft);border-bottom:1.5px solid var(--border);font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center">
-      <span id="addr-title" style="color:var(--blue)">주소 검색</span>
-      <button class="btn sm neutral" onclick="closeAddr()"><i class="ti ti-x" aria-hidden="true"></i> 닫기</button>
+<!-- 주소 overlay wrapper — position:relative로 in-flow 처리 -->
+<div class="overlay-wrap">
+<div class="addr-overlay" id="addr-overlay">
+  <div class="overlay-box">
+    <div class="overlay-hdr">
+      <span id="addr-title">주소 검색</span>
+      <button class="btn neutral sm" onclick="closeAddr()"><i class="ti ti-x" aria-hidden="true"></i> 닫기</button>
     </div>
-    <iframe id="addr-iframe" src="" title="주소 검색" style="width:100%;height:380px;border:none;display:block"></iframe>
+    <iframe id="addr-iframe" src="" title="카카오 주소 검색" style="width:100%;height:380px;border:none;display:block"></iframe>
   </div>
 </div>
 
@@ -221,7 +224,7 @@ textarea{resize:vertical;min-height:50px}
       <div style="display:flex;gap:8px;align-items:center">
         <span id="sync-time" style="color:var(--txt3)"></span>
         <button class="btn sm neutral" onclick="fetchData(true)"><i class="ti ti-refresh" aria-hidden="true"></i> 새로고침</button>
-        <button class="btn sm danger" onclick="resetSetup()"><i class="ti ti-settings" aria-hidden="true"></i> 설정 초기화</button>
+        <button class="btn sm act-del" onclick="resetSetup()"><i class="ti ti-settings" aria-hidden="true"></i> 연결 설정</button>
       </div>
     </div>
 
@@ -235,14 +238,8 @@ textarea{resize:vertical;min-height:50px}
           <div class="stat-card c-purple"><div class="stat-lbl">서울 보유</div><div class="stat-val c-purple" id="st-seoul">—</div></div>
         </div>
         <div class="office-row">
-          <div class="office-block">
-            <div class="office-hdr bs"><i class="ti ti-map-pin" aria-hidden="true"></i>부산 오피스</div>
-            <div class="card-grid-area" id="busan-cards"></div>
-          </div>
-          <div class="office-block">
-            <div class="office-hdr se"><i class="ti ti-map-pin" aria-hidden="true"></i>서울 오피스</div>
-            <div class="card-grid-area" id="seoul-cards"></div>
-          </div>
+          <div class="office-block"><div class="office-hdr bs"><i class="ti ti-map-pin" aria-hidden="true"></i>부산 오피스</div><div class="card-grid-area" id="busan-cards"></div></div>
+          <div class="office-block"><div class="office-hdr se"><i class="ti ti-map-pin" aria-hidden="true"></i>서울 오피스</div><div class="card-grid-area" id="seoul-cards"></div></div>
         </div>
         <div class="sec-title">현재 대여 중</div>
         <div id="active-list"></div>
@@ -255,19 +252,18 @@ textarea{resize:vertical;min-height:50px}
             <div class="panel-hdr ph-out"><i class="ti ti-arrow-up-right" aria-hidden="true"></i>카드 불출</div>
             <div class="panel-body">
               <div class="fg"><label>카드 선택</label><select id="co-card"></select></div>
-              <!-- 커스텀 팀원 드롭다운 -->
               <div class="fg">
                 <label>팀원</label>
-                <div class="member-select-wrap">
-                  <div class="member-select-display" id="member-display" onclick="toggleMemberDrop()">
-                    <span id="member-display-text" style="color:var(--txt3)">팀원을 선택하세요</span>
-                    <i class="ti ti-chevron-down arrow" aria-hidden="true"></i>
+                <div class="member-wrap">
+                  <div class="member-display" id="mem-disp" onclick="toggleMemDrop()">
+                    <span id="mem-disp-txt" style="color:var(--txt3)">팀원을 선택하세요</span>
+                    <i class="ti ti-chevron-down chev" aria-hidden="true"></i>
                   </div>
-                  <div class="member-dropdown" id="member-dropdown">
-                    <div class="member-group-label gl-bs"><i class="ti ti-map-pin" aria-hidden="true"></i>부산 오피스</div>
-                    <div id="member-opts-busan"></div>
-                    <div class="member-group-label gl-se"><i class="ti ti-map-pin" aria-hidden="true"></i>서울 오피스</div>
-                    <div id="member-opts-seoul"></div>
+                  <div class="member-dd" id="mem-dd">
+                    <div class="grp-hdr g-bs"><i class="ti ti-map-pin" aria-hidden="true"></i>부산 오피스</div>
+                    <div id="m-opts-bs"></div>
+                    <div class="grp-hdr g-se"><i class="ti ti-map-pin" aria-hidden="true"></i>서울 오피스</div>
+                    <div id="m-opts-se"></div>
                   </div>
                   <input type="hidden" id="co-member" value="">
                 </div>
@@ -283,14 +279,14 @@ textarea{resize:vertical;min-height:50px}
               <div class="fg">
                 <label>출발지</label>
                 <div class="addr-row">
-                  <input type="text" id="co-from-addr" placeholder="직접 입력하거나 검색">
+                  <input type="text" id="co-from-addr" placeholder="직접 입력하거나 검색 버튼 클릭">
                   <button class="addr-btn" onclick="openAddr('from')"><i class="ti ti-search" aria-hidden="true"></i> 검색</button>
                 </div>
               </div>
               <div class="fg">
                 <label>도착지</label>
                 <div class="addr-row">
-                  <input type="text" id="co-to-addr" placeholder="직접 입력하거나 검색">
+                  <input type="text" id="co-to-addr" placeholder="직접 입력하거나 검색 버튼 클릭">
                   <button class="addr-btn" onclick="openAddr('to')"><i class="ti ti-search" aria-hidden="true"></i> 검색</button>
                 </div>
               </div>
@@ -365,7 +361,7 @@ textarea{resize:vertical;min-height:50px}
             </div>
             <button class="btn primary" onclick="addCard()"><i class="ti ti-plus" aria-hidden="true"></i> 카드 추가</button>
           </div>
-          <div id="settings-card-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px"></div>
+          <div id="settings-card-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:7px"></div>
         </div></div>
         <div class="sec-title">팀원 관리</div>
         <div class="panel" style="margin-bottom:18px"><div class="panel-body">
@@ -381,21 +377,38 @@ textarea{resize:vertical;min-height:50px}
         </div></div>
         <div class="sec-title">API 연결 정보</div>
         <div class="panel"><div class="panel-body" style="font-size:12px;color:var(--txt2);display:flex;flex-direction:column;gap:6px">
-          <div>Bin ID: <code id="info-binid" style="font-family:var(--font-mono);color:var(--blue);font-size:12px">—</code></div>
+          <div>Bin ID: <code id="info-binid" style="font-family:var(--font-mono);color:var(--blue)">—</code></div>
           <div>마지막 동기화: <span id="info-sync">—</span></div>
         </div></div>
       </div>
     </div>
   </div>
 </div>
-</div>
+</div><!-- /overlay-wrap -->
 
 <script>
-/* ── 팀원 데이터 (오피스 구분) ── */
+/* ── 팀원 정의 (순서 및 오피스 확정) ── */
 const MEMBERS_BUSAN=['전정호','윤수아','송도현','서승','최형욱','남윤화','정지형','서재혁','김승훈','박성우','강민정','최경민','유인환','허지원','이지수','박재완'];
 const MEMBERS_SEOUL=['위보라','공주민','김영은','오지윤','박세준','최상호'];
 
-/* ── 카카오 주소 ── */
+const DEF_MEMBERS=[
+  ...MEMBERS_BUSAN.map(n=>({name:n,office:'busan'})),
+  ...MEMBERS_SEOUL.map(n=>({name:n,office:'seoul'})),
+];
+const DEF_CARDS=[
+  {id:'HI-001',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-002',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-003',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-004',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-005',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-006',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-007',office:'busan',inUse:false,user:null,checkoutId:null},
+  {id:'HI-008',office:'seoul',inUse:false,user:null,checkoutId:null},
+  {id:'HI-009',office:'seoul',inUse:false,user:null,checkoutId:null},
+  {id:'HI-010',office:'seoul',inUse:false,user:null,checkoutId:null},
+];
+
+/* ── 카카오 주소 iframe (postMessage origin=* 방어) ── */
 const KAKAO_HTML=`<!DOCTYPE html><html><head><meta charset="utf-8">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"><\/script>
 </head><body style="margin:0;padding:0;overflow:hidden">
@@ -404,7 +417,8 @@ const KAKAO_HTML=`<!DOCTYPE html><html><head><meta charset="utf-8">
 new daum.Postcode({
   oncomplete:function(d){
     var addr=d.roadAddress||d.jibunAddress;
-    window.parent.postMessage({type:'kakao-addr',address:addr},'*');
+    try{ window.parent.postMessage({hipassAddr:true,address:addr},'*'); }catch(e){}
+    try{ parent.postMessage({hipassAddr:true,address:addr},'*'); }catch(e){}
   },
   width:'100%',height:'380px',
   theme:{bgColor:'#f6f8fd',searchBgColor:'#3b6cf7',contentBgColor:'#fff',pageBgColor:'#f6f8fd',textColor:'#111827',queryTextColor:'#fff'}
@@ -412,60 +426,69 @@ new daum.Postcode({
 <\/script></body></html>`;
 
 let addrTarget=null;
+
 function openAddr(t){
   addrTarget=t;
   document.getElementById('addr-title').textContent=t==='from'?'출발지 주소 검색':'도착지 주소 검색';
   const iframe=document.getElementById('addr-iframe');
   const blob=new Blob([KAKAO_HTML],{type:'text/html'});
-  iframe.src=URL.createObjectURL(blob);
-  document.getElementById('addr-overlay').style.display='flex';
+  const url=URL.createObjectURL(blob);
+  iframe.src=url;
+  document.getElementById('addr-overlay').classList.add('open');
 }
 function closeAddr(){
-  document.getElementById('addr-overlay').style.display='none';
+  document.getElementById('addr-overlay').classList.remove('open');
   addrTarget=null;
 }
-window.addEventListener('message',function(e){
-  if(e.data&&e.data.type==='kakao-addr'){
-    const target=addrTarget;
-    if(target==='from') document.getElementById('co-from-addr').value=e.data.address;
-    else if(target==='to') document.getElementById('co-to-addr').value=e.data.address;
-    closeAddr();
-  }
-});
 
-/* ── 커스텀 팀원 드롭다운 ── */
-let selectedMember='';
-function buildMemberDrop(){
-  const ob=document.getElementById('member-opts-busan');
-  const os=document.getElementById('member-opts-seoul');
-  if(!ob||!os)return;
-  const busanList=members.filter(m=>m.office==='busan');
-  const seoulList=members.filter(m=>m.office==='seoul');
-  ob.innerHTML=busanList.map(m=>`<div class="member-option ${m.name===selectedMember?'selected':''}" onclick="selectMember('${m.name}')">${m.name}</div>`).join('');
-  os.innerHTML=seoulList.map(m=>`<div class="member-option ${m.name===selectedMember?'selected':''}" onclick="selectMember('${m.name}')">${m.name}</div>`).join('');
+/* postMessage 수신 — origin 무관하게 hipassAddr 플래그로 식별 */
+window.addEventListener('message',function(e){
+  if(!e.data||!e.data.hipassAddr)return;
+  const addr=e.data.address||'';
+  if(!addr)return;
+  const t=addrTarget;
+  if(t==='from'){document.getElementById('co-from-addr').value=addr;}
+  else if(t==='to'){document.getElementById('co-to-addr').value=addr;}
+  closeAddr();
+},false);
+
+/* ── 팀원 커스텀 드롭다운 ── */
+let selMember='';
+function buildMemOpts(){
+  const bs=members.filter(m=>m.office==='busan');
+  const se=members.filter(m=>m.office==='seoul');
+  document.getElementById('m-opts-bs').innerHTML=bs.map(m=>`<div class="m-opt${m.name===selMember?' sel':''}" onclick="selMem('${m.name}')">${m.name}</div>`).join('');
+  document.getElementById('m-opts-se').innerHTML=se.map(m=>`<div class="m-opt${m.name===selMember?' sel':''}" onclick="selMem('${m.name}')">${m.name}</div>`).join('');
 }
-function toggleMemberDrop(){
-  const dd=document.getElementById('member-dropdown');
-  const disp=document.getElementById('member-display');
-  const isOpen=dd.classList.contains('open');
-  dd.classList.toggle('open',!isOpen);
-  disp.classList.toggle('open',!isOpen);
-  if(!isOpen)buildMemberDrop();
+function toggleMemDrop(){
+  const dd=document.getElementById('mem-dd');
+  const disp=document.getElementById('mem-disp');
+  const open=dd.classList.contains('open');
+  if(!open)buildMemOpts();
+  dd.classList.toggle('open',!open);
+  disp.classList.toggle('open',!open);
 }
-function selectMember(name){
-  selectedMember=name;
+function selMem(name){
+  selMember=name;
   document.getElementById('co-member').value=name;
-  document.getElementById('member-display-text').textContent=name;
-  document.getElementById('member-display-text').style.color='var(--txt)';
-  document.getElementById('member-dropdown').classList.remove('open');
-  document.getElementById('member-display').classList.remove('open');
-  buildMemberDrop();
+  const txt=document.getElementById('mem-disp-txt');
+  txt.textContent=name;txt.style.color='var(--txt)';
+  document.getElementById('mem-dd').classList.remove('open');
+  document.getElementById('mem-disp').classList.remove('open');
+  buildMemOpts();
 }
 document.addEventListener('click',function(e){
-  const wrap=document.querySelector('.member-select-wrap');
+  const wrap=document.querySelector('.member-wrap');
   if(wrap&&!wrap.contains(e.target)){
-    document.getElementById('member-dropdown')?.classList.remove('open');
-    document.getElementById('member-display')?.classList.remove('open');
+    document.getElementById('mem-dd')?.classList.remove('open');
+    document.getElementById('mem-disp')?.classList.remove('open');
+  }
+  /* 주소 overlay 바깥 클릭 닫기 */
+  const overlay=document.getElementById('addr-overlay');
+  const box=overlay?.querySelector('.overlay-box');
+  if(overlay&&overlay.classList.contains('open')&&box&&!box.contains(e.target)){
+    const btn=e.target.closest('[onclick^="openAddr"]');
+    if(!btn)closeAddr();
   }
 });
 
@@ -487,24 +510,7 @@ function validateDates(){
 }
 
 /* ── Storage ── */
-const LS='hipass_cfg_v6';
-const DEF_CARDS=[
-  {id:'HI-001',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-002',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-003',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-004',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-005',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-006',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-007',office:'busan',inUse:false,user:null,checkoutId:null},
-  {id:'HI-008',office:'seoul',inUse:false,user:null,checkoutId:null},
-  {id:'HI-009',office:'seoul',inUse:false,user:null,checkoutId:null},
-  {id:'HI-010',office:'seoul',inUse:false,user:null,checkoutId:null},
-];
-const DEF_MEMBERS=[
-  ...MEMBERS_BUSAN.map(n=>({name:n,office:'busan'})),
-  ...MEMBERS_SEOUL.map(n=>({name:n,office:'seoul'})),
-];
-
+const LS='hipass_cfg_v7';
 let apiKey='',binId='',cards=[],members=[],logs=[];
 let retOff='busan',nco='busan',nmo='busan',poll=null;
 
@@ -513,6 +519,8 @@ function scfg(c){localStorage.setItem(LS,JSON.stringify(c))}
 function show(s){document.getElementById('setup-screen').style.display=s==='setup'?'block':'none';document.getElementById('main-screen').style.display=s==='main'?'block':'none';}
 function resetSetup(){stopPoll();show('setup');}
 function setSS(state,msg){document.getElementById('sync-dot').className='dot'+(state==='ok'?'':state==='err'?' err':' spin');document.getElementById('sync-status').textContent=msg;}
+
+function normMembers(raw){return (raw||[]).map(m=>typeof m==='string'?{name:m,office:'busan'}:m);}
 
 function start(){
   const c=gcfg();
@@ -542,15 +550,8 @@ async function loadExisting(){
   try{
     const r=await fetch(`https://api.jsonbin.io/v3/b/${bid}/latest`,{headers:{'X-Master-Key':key}});
     const d=await r.json();
-    if(d.record){
-      apiKey=key;binId=bid;scfg({apiKey:key,binId:bid});
-      cards=d.record.cards||[];
-      /* 구버전 members 배열(string[]) 마이그레이션 */
-      const raw=d.record.members||[];
-      members=raw.map(m=>typeof m==='string'?{name:m,office:'busan'}:m);
-      logs=d.record.logs||[];
-      document.getElementById('info-binid').textContent=binId;show('main');render();startPoll();
-    } else msg.textContent='연결 실패: '+JSON.stringify(d);
+    if(d.record){apiKey=key;binId=bid;scfg({apiKey:key,binId:bid});cards=d.record.cards||[];members=normMembers(d.record.members);logs=d.record.logs||[];document.getElementById('info-binid').textContent=binId;show('main');render();startPoll();}
+    else msg.textContent='연결 실패: '+JSON.stringify(d);
   }catch(e){msg.textContent='오류: '+e.message;}
 }
 async function fetchData(sh){
@@ -559,16 +560,8 @@ async function fetchData(sh){
   try{
     const r=await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`,{headers:{'X-Master-Key':apiKey}});
     const d=await r.json();
-    if(d.record){
-      cards=d.record.cards||[];
-      const raw=d.record.members||[];
-      members=raw.map(m=>typeof m==='string'?{name:m,office:'busan'}:m);
-      logs=d.record.logs||[];
-      const n=new Date();
-      document.getElementById('sync-time').textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-      document.getElementById('info-sync').textContent=n.toLocaleString('ko-KR');
-      setSS('ok','실시간 동기화 중');render();
-    } else setSS('err','데이터 오류');
+    if(d.record){cards=d.record.cards||[];members=normMembers(d.record.members);logs=d.record.logs||[];const n=new Date();document.getElementById('sync-time').textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});document.getElementById('info-sync').textContent=n.toLocaleString('ko-KR');setSS('ok','실시간 동기화 중');render();}
+    else setSS('err','데이터 오류');
   }catch{setSS('err','연결 실패');}
 }
 async function pushData(){
@@ -587,11 +580,11 @@ function showTab(t){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById('tab-'+t).classList.add('active');
   if(t==='log')renderLog();
-  if(t==='checkout'){updateRetInfo();buildMemberDrop();}
+  if(t==='checkout'){updateRetInfo();buildMemOpts();}
 }
 
 function render(){
-  renderDash();renderForms();renderLog();renderSettings();buildMemberDrop();
+  renderDash();renderForms();renderLog();renderSettings();buildMemOpts();
   const d=document.getElementById('co-from');if(d&&!d.value)d.value=new Date().toISOString().split('T')[0];
   const rm=document.getElementById('report-month');if(rm&&!rm.value){const n=new Date();rm.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}`;}
 }
@@ -624,18 +617,13 @@ function renderForms(){
   const rc=document.getElementById('re-card');
   rc.innerHTML=iu.length?iu.map(c=>`<option value="${c.id}">${c.id} — ${c.user||''} [${c.office==='busan'?'부산':'서울'}]</option>`).join(''):'<option>반납할 카드 없음</option>';
   rc.onchange=updateRetInfo;updateRetInfo();
-  ['lf-card','lf-member'].forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    const p=el.value;
-    if(id==='lf-card') el.innerHTML='<option value="">전체 카드</option>'+cards.map(c=>`<option value="${c.id}">${c.id}</option>`).join('');
-    else el.innerHTML='<option value="">전체 팀원</option>'+members.map(m=>`<option value="${m.name}">${m.name}</option>`).join('');
-    el.value=p;
-  });
+  const lfc=document.getElementById('lf-card'),lfm=document.getElementById('lf-member');
+  if(lfc){const p=lfc.value;lfc.innerHTML='<option value="">전체 카드</option>'+cards.map(c=>`<option value="${c.id}">${c.id}</option>`).join('');lfc.value=p;}
+  if(lfm){const p=lfm.value;lfm.innerHTML='<option value="">전체 팀원</option>'+members.map(m=>`<option value="${m.name}">${m.name}</option>`).join('');lfm.value=p;}
 }
 
 function updateRetInfo(){
-  const rc=document.getElementById('re-card');
-  const el=document.getElementById('ret-info');
+  const rc=document.getElementById('re-card'),el=document.getElementById('ret-info');
   if(!rc||!el)return;
   const card=cards.find(c=>c.id===rc.value);
   if(!card||!card.inUse){el.innerHTML='<span style="color:var(--txt3)">반납할 카드를 선택하세요.</span>';return;}
@@ -663,9 +651,8 @@ function doCheckout(){
   logs.push({id:lid,cardId,member,dateFrom,dateTo,addrFrom,addrTo,note,type:'out',returned:false,office:card?.office||'busan',ts:Date.now()});
   if(card){card.inUse=true;card.user=member;card.checkoutId=lid;}
   ['co-from-addr','co-to-addr','co-note'].forEach(id=>document.getElementById(id).value='');
-  selectedMember='';
-  document.getElementById('member-display-text').textContent='팀원을 선택하세요';
-  document.getElementById('member-display-text').style.color='var(--txt3)';
+  selMember='';
+  const t=document.getElementById('mem-disp-txt');t.textContent='팀원을 선택하세요';t.style.color='var(--txt3)';
   document.getElementById('co-member').value='';
   pushData();alert(`${cardId} 불출 완료\n담당: ${member}\n기간: ${dateFrom}${dateTo?' ~ '+dateTo:''}`);
 }
@@ -710,7 +697,7 @@ function addBillingRow(){
   const area=document.getElementById('billing-rows');
   const div=document.createElement('div');
   div.style.cssText='display:grid;grid-template-columns:110px 1fr 1fr 30px;gap:7px;margin-bottom:7px;align-items:center';
-  div.innerHTML=`<select style="width:100%">${cards.map(c=>`<option value="${c.id}">${c.id}</option>`).join('')}</select><input type="number" placeholder="금액(원)"><input type="text" placeholder="비고"><button class="btn sm danger" onclick="this.parentElement.remove()"><i class="ti ti-x" aria-hidden="true"></i></button>`;
+  div.innerHTML=`<select style="width:100%">${cards.map(c=>`<option value="${c.id}">${c.id}</option>`).join('')}</select><input type="number" placeholder="금액(원)"><input type="text" placeholder="비고"><button class="act-del" onclick="this.parentElement.remove()"><i class="ti ti-x" aria-hidden="true"></i></button>`;
   area.appendChild(div);
 }
 function generateReport(){
@@ -722,13 +709,11 @@ function generateReport(){
   const outLogs=logs.filter(l=>(l.dateFrom||l.date)?.startsWith(month)&&l.type==='out');
   const summary=cards.map(c=>{
     const outs=outLogs.filter(l=>l.cardId===c.id);
-    const bAmt=billing[c.id]?.amount||0;
-    const un=outs.filter(l=>!l.returned).length;
+    const bAmt=billing[c.id]?.amount||0;const un=outs.filter(l=>!l.returned).length;
     let st='ok';if(bAmt>0&&outs.length===0)st='err';else if(bAmt>0&&un>0)st='warn';
     return{card:c.id,office:c.office,cnt:outs.length,bAmt,un,mems:[...new Set(outs.map(l=>l.member))],st};
   });
-  const issues=summary.filter(r=>r.st!=='ok');
-  const tot=summary.reduce((s,r)=>s+r.bAmt,0);
+  const issues=summary.filter(r=>r.st!=='ok');const tot=summary.reduce((s,r)=>s+r.bAmt,0);
   document.getElementById('report-output').innerHTML=`<div class="panel"><div style="padding:14px 18px;border-bottom:1.5px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;background:var(--bg-soft)"><div><div style="font-weight:700;font-size:14px">${month} 하이패스 대조 리포트</div><div style="font-size:11px;color:var(--txt3);margin-top:3px">생성: ${new Date().toLocaleDateString('ko-KR')}</div></div><div style="text-align:right;font-size:12px;color:var(--txt2)">카드사 청구 합계<br><strong style="font-size:16px;color:var(--blue)">${tot.toLocaleString()}원</strong></div></div>${issues.length?`<div style="padding:9px 16px;background:var(--amber-lt);border-bottom:1.5px solid var(--amber-md);font-size:12px;font-weight:600;color:var(--amber)"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 검토 필요 ${issues.length}건</div>`:`<div style="padding:9px 16px;background:var(--green-lt);border-bottom:1.5px solid var(--green-md);font-size:12px;font-weight:600;color:var(--green)"><i class="ti ti-check" aria-hidden="true"></i> 이상 없음</div>`}<table style="table-layout:fixed"><thead><tr><th style="width:75px">카드</th><th style="width:65px">오피스</th><th style="width:52px">불출</th><th>사용자</th><th style="width:90px">청구금액</th><th style="width:58px">미반납</th><th style="width:52px">상태</th></tr></thead><tbody>${summary.map(r=>`<tr><td><strong>${r.card}</strong></td><td><span class="badge ${r.office==='busan'?'bs':'se'}">${r.office==='busan'?'부산':'서울'}</span></td><td style="text-align:center">${r.cnt}</td><td style="font-size:11px">${r.mems.join(', ')||'—'}</td><td style="text-align:right;font-size:12px">${r.bAmt?r.bAmt.toLocaleString()+'원':'—'}</td><td style="text-align:center">${r.un?`<span class="badge warn">${r.un}건</span>`:'—'}</td><td><span class="badge ${r.st}">${r.st==='ok'?'정상':r.st==='warn'?'검토':'오류'}</span></td></tr>`).join('')}</tbody></table></div>`;
 }
 function exportCSV(){
@@ -744,17 +729,17 @@ function exportReport(){
 }
 
 function renderSettings(){
-  /* 카드 */
+  /* 카드 — 오피스 뱃지는 badge 스타일, 버튼은 act-switch/act-del로 명확 구분 */
   document.getElementById('settings-card-grid').innerHTML=cards.map(c=>`
-    <div class="settings-card-item">
-      <div class="card-info">
+    <div class="sc-item">
+      <div class="sc-info">
         <span style="font-size:13px;font-weight:600">${c.id}</span>
         <span class="badge ${c.office==='busan'?'bs':'se'}">${c.office==='busan'?'부산':'서울'}</span>
         ${c.inUse?`<span class="badge out">대여중</span>`:''}
       </div>
-      <div class="card-actions">
-        ${!c.inUse?`<button class="btn sm neutral" onclick="toggleOffice('${c.id}')"><i class="ti ti-arrows-exchange" aria-hidden="true"></i> 오피스 전환</button>`:''}
-        ${!c.inUse?`<button class="btn sm danger" onclick="removeCard('${c.id}')"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>`:''}
+      <div class="sc-actions">
+        ${!c.inUse?`<button class="act-switch" onclick="toggleOffice('${c.id}')"><i class="ti ti-arrows-exchange" aria-hidden="true"></i> 전환</button>`:''}
+        ${!c.inUse?`<button class="act-del" onclick="removeCard('${c.id}')"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>`:''}
       </div>
     </div>`).join('');
   /* 팀원 */
@@ -764,7 +749,7 @@ function renderSettings(){
         <span class="badge ${m.office==='busan'?'bs':'se'}" style="flex-shrink:0">${m.office==='busan'?'부산':'서울'}</span>
         <span class="mem-name">${m.name}</span>
       </div>
-      <button class="btn sm danger" onclick="removeMember('${m.name}')"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>
+      <button class="act-del" onclick="removeMember('${m.name}')"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>
     </div>`).join('');
 }
 function toggleOffice(id){const c=cards.find(x=>x.id===id);if(!c||c.inUse)return;c.office=c.office==='busan'?'seoul':'busan';pushData();}
@@ -778,8 +763,7 @@ function removeCard(id){if(!confirm(`${id} 카드를 삭제하시겠습니까?`)
 function addMember(){
   const v=document.getElementById('new-member').value.trim();
   if(!v)return;if(members.find(m=>m.name===v)){alert('이미 존재합니다.');return;}
-  members.push({name:v,office:nmo});
-  document.getElementById('new-member').value='';pushData();
+  members.push({name:v,office:nmo});document.getElementById('new-member').value='';pushData();
 }
 function removeMember(n){if(!confirm(`${n} 팀원을 삭제하시겠습니까?`))return;members=members.filter(m=>m.name!==n);pushData();}
 
