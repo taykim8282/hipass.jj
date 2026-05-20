@@ -1,102 +1,102 @@
 
-<h2 class="sr-only">하이패스 카드 관리 시스템 — 라이트 테마, 카카오 주소 검색, 부산/서울 오피스, 실시간 동기화</h2>
+<h2 class="sr-only">하이패스 카드 관리 시스템 — 카드 아이콘 현황, 주소 직접입력+카카오, 출장기간 유효성검사</h2>
 <style>
 :root{
-  --white:#ffffff;
-  --bg-page:#f4f6fb;
-  --bg-card:#ffffff;
-  --bg-soft:#f8f9fc;
-  --border:#e2e6f0;
-  --border-strong:#c8cfe4;
-
-  --navy:#1a2550;
-  --blue:#3b6cf7;
-  --blue-lt:#eef2ff;
-  --blue-md:#c7d4fc;
-
-  --teal:#0ea882;
-  --teal-lt:#e6f7f2;
-  --teal-md:#9fe3cf;
-
-  --purple:#7c3aed;
-  --purple-lt:#f3eeff;
-  --purple-md:#c4b0f7;
-
-  --green:#16a34a;
-  --green-lt:#ecfdf5;
-  --green-md:#86efac;
-
-  --amber:#d97706;
-  --amber-lt:#fffbeb;
-  --amber-md:#fcd34d;
-
-  --red:#dc2626;
-  --red-lt:#fef2f2;
-  --red-md:#fca5a5;
-
-  --txt:#111827;
-  --txt2:#4b5563;
-  --txt3:#9ca3af;
-
+  --white:#fff;--bg-page:#f0f3fa;--bg-card:#fff;--bg-soft:#f6f8fd;
+  --border:#dde3f0;--border-strong:#b8c4de;
+  --navy:#1a2550;--blue:#3b6cf7;--blue-lt:#eef2ff;--blue-md:#b8cafc;
+  --teal:#0ea882;--teal-lt:#e4f7f1;--teal-md:#7dd9c0;
+  --purple:#7c3aed;--purple-lt:#f3eeff;--purple-md:#c4b0f7;
+  --green:#16a34a;--green-lt:#ecfdf5;--green-md:#86efac;
+  --amber:#d97706;--amber-lt:#fffbeb;--amber-md:#fcd34d;
+  --red:#dc2626;--red-lt:#fef2f2;--red-md:#fca5a5;
+  --txt:#111827;--txt2:#4b5563;--txt3:#9ca3af;
   --r:10px;--r-sm:6px;--r-xs:4px;
-  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);
+  --sh:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --sh-md:0 4px 14px rgba(0,0,0,.10),0 2px 4px rgba(0,0,0,.06);
+  --sh-card:0 2px 8px rgba(59,108,247,.10),0 1px 3px rgba(0,0,0,.06);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 .app{font-family:var(--font-sans);background:var(--bg-page);min-height:580px;border-radius:var(--r);overflow:hidden;color:var(--txt)}
 
-/* ── topbar ── */
-.topbar{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 20px;display:flex;align-items:stretch;gap:0;box-shadow:var(--shadow)}
+/* topbar */
+.topbar{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 20px;display:flex;align-items:stretch;box-shadow:var(--sh)}
 .logo{font-size:13px;font-weight:700;color:var(--navy);padding:0 20px 0 0;margin-right:8px;display:flex;align-items:center;gap:8px;border-right:1.5px solid var(--border)}
 .logo-icon{width:28px;height:28px;background:var(--blue);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
-.tab{padding:0 14px;height:48px;font-size:13px;cursor:pointer;border:none;background:none;color:var(--txt2);border-bottom:2.5px solid transparent;font-family:var(--font-sans);display:flex;align-items:center;gap:6px;white-space:nowrap;font-weight:500}
+.tab{padding:0 14px;height:48px;font-size:13px;cursor:pointer;border:none;background:none;color:var(--txt2);border-bottom:2.5px solid transparent;font-family:var(--font-sans);display:flex;align-items:center;gap:6px;white-space:nowrap;font-weight:500;transition:all .12s}
 .tab:hover{color:var(--navy);background:var(--bg-soft)}
 .tab.active{color:var(--blue);border-bottom-color:var(--blue);background:var(--blue-lt)}
 
-/* ── syncbar ── */
+/* syncbar */
 .syncbar{background:var(--white);border-bottom:1px solid var(--border);padding:6px 20px;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--txt3)}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;margin-right:5px;position:relative;top:-1px}
 .dot.err{background:var(--red)}.dot.spin{background:var(--amber)}
 
-/* ── layout ── */
+/* layout */
 .content{padding:18px 20px}
 .section{display:none}.section.active{display:block}
 
-/* ── stat cards ── */
+/* stat cards */
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.stat-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--sh);position:relative;overflow:hidden}
 .stat-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
-.stat-card.c-blue::before{background:var(--blue)}
-.stat-card.c-amber::before{background:var(--amber)}
-.stat-card.c-teal::before{background:var(--teal)}
-.stat-card.c-purple::before{background:var(--purple)}
+.stat-card.c-blue::before{background:var(--blue)}.stat-card.c-amber::before{background:var(--amber)}
+.stat-card.c-teal::before{background:var(--teal)}.stat-card.c-purple::before{background:var(--purple)}
 .stat-lbl{font-size:11px;color:var(--txt3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
 .stat-val{font-size:28px;font-weight:700;line-height:1}
 .stat-val.c-blue{color:var(--blue)}.stat-val.c-amber{color:var(--amber)}.stat-val.c-teal{color:var(--teal)}.stat-val.c-purple{color:var(--purple)}
 
-/* ── office blocks ── */
+/* ── OFFICE BLOCKS ── */
 .office-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.office-block{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.office-block{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
 .office-hdr{padding:10px 16px;font-size:12px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:7px;text-transform:uppercase}
 .office-hdr.bs{background:linear-gradient(90deg,var(--teal-lt),var(--white));color:var(--teal);border-bottom:1.5px solid var(--teal-md)}
 .office-hdr.se{background:linear-gradient(90deg,var(--blue-lt),var(--white));color:var(--blue);border-bottom:1.5px solid var(--blue-md)}
-.chips{padding:12px 14px;display:flex;flex-wrap:wrap;gap:7px;min-height:50px}
-.chip{padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;border:1.5px solid transparent}
-.chip.f-bs{background:var(--teal-lt);color:var(--teal);border-color:var(--teal-md)}
-.chip.f-se{background:var(--blue-lt);color:var(--blue);border-color:var(--blue-md)}
-.chip.used{background:#f3f4f6;color:var(--txt3);border-color:#e5e7eb;text-decoration:line-through}
+.card-grid-area{padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px;min-height:58px}
 
-/* ── tables ── */
-.tbl-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px}
-.tbl-head{padding:10px 16px;font-size:11px;font-weight:700;color:var(--txt2);letter-spacing:.05em;border-bottom:1.5px solid var(--border);background:var(--bg-soft);display:flex;align-items:center;justify-content:space-between}
+/* ── HIPASS CARD TILE ── */
+.hcard{border-radius:8px;padding:10px 10px 8px;position:relative;cursor:default;transition:transform .15s,box-shadow .15s;min-height:72px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.hcard::after{content:'';position:absolute;top:-18px;right:-18px;width:52px;height:52px;border-radius:50%;opacity:.18}
+/* available */
+.hcard.av-bs{background:linear-gradient(135deg,#0ea882 0%,#06c997 100%);box-shadow:0 3px 10px rgba(14,168,130,.30)}
+.hcard.av-bs::after{background:#fff}
+.hcard.av-se{background:linear-gradient(135deg,#3b6cf7 0%,#6691ff 100%);box-shadow:0 3px 10px rgba(59,108,247,.30)}
+.hcard.av-se::after{background:#fff}
+/* in-use */
+.hcard.used{background:#e9ecf4;box-shadow:none;border:1.5px dashed #c2cade}
+.hcard.used::after{display:none}
+/* card chip strip (bottom stripe) */
+.hcard-stripe{position:absolute;bottom:0;left:0;right:0;height:4px;border-radius:0 0 8px 8px}
+.av-bs .hcard-stripe{background:rgba(255,255,255,.35)}
+.av-se .hcard-stripe{background:rgba(255,255,255,.35)}
+.used .hcard-stripe{background:#c2cade}
+/* card id */
+.hcard-id{font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1}
+.av-bs .hcard-id,.av-se .hcard-id{color:rgba(255,255,255,.9)}
+.used .hcard-id{color:var(--txt3)}
+/* card icon row */
+.hcard-icon{font-size:18px;margin:3px 0}
+.av-bs .hcard-icon,.av-se .hcard-icon{color:rgba(255,255,255,.75)}
+.used .hcard-icon{color:#b0bac8}
+/* user name */
+.hcard-user{font-size:10px;font-weight:600;line-height:1.2;min-height:13px}
+.av-bs .hcard-user,.av-se .hcard-user{color:rgba(255,255,255,.95)}
+.used .hcard-user{color:var(--txt3)}
+/* status pill */
+.hcard-pill{position:absolute;top:7px;right:7px;font-size:9px;font-weight:700;padding:2px 5px;border-radius:99px;line-height:1}
+.av-bs .hcard-pill,.av-se .hcard-pill{background:rgba(255,255,255,.25);color:rgba(255,255,255,.9)}
+.used .hcard-pill{background:#dc2626;color:#fff}
+
+/* tables */
+.tbl-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:14px}
 table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
 th{text-align:left;padding:9px 12px;color:var(--txt3);font-weight:600;border-bottom:1.5px solid var(--border);font-size:11px;letter-spacing:.05em;background:var(--bg-soft)}
 td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--txt);vertical-align:top}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--bg-soft)}
 
-/* ── badges ── */
-.badge{display:inline-block;padding:3px 9px;border-radius:var(--r-xs);font-size:11px;font-weight:600;border:1px solid transparent}
+/* badges */
+.badge{display:inline-block;padding:3px 8px;border-radius:var(--r-xs);font-size:11px;font-weight:600;border:1px solid transparent}
 .badge.out{background:var(--purple-lt);color:var(--purple);border-color:var(--purple-md)}
 .badge.in{background:var(--green-lt);color:var(--green);border-color:var(--green-md)}
 .badge.bs{background:var(--teal-lt);color:var(--teal);border-color:var(--teal-md)}
@@ -105,16 +105,16 @@ tr:hover td{background:var(--bg-soft)}
 .badge.warn{background:var(--amber-lt);color:var(--amber);border-color:var(--amber-md)}
 .badge.err{background:var(--red-lt);color:var(--red);border-color:var(--red-md)}
 
-/* ── panels ── */
-.panel{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin-bottom:14px}
+/* panels */
+.panel{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:14px}
 .panel-hdr{padding:12px 18px;font-size:12px;font-weight:700;letter-spacing:.04em;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:8px}
-.panel-hdr.ph-out{background:linear-gradient(90deg,var(--purple-lt),var(--white));color:var(--purple)}
-.panel-hdr.ph-ret{background:linear-gradient(90deg,var(--green-lt),var(--white));color:var(--green)}
-.panel-hdr.ph-default{background:var(--bg-soft);color:var(--txt2)}
+.ph-out{background:linear-gradient(90deg,var(--purple-lt),var(--white));color:var(--purple)}
+.ph-ret{background:linear-gradient(90deg,var(--green-lt),var(--white));color:var(--green)}
+.ph-def{background:var(--bg-soft);color:var(--txt2)}
 .panel-body{padding:16px 18px}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-/* ── form ── */
+/* form */
 .fg{display:flex;flex-direction:column;gap:4px;margin-bottom:11px}
 .fg label{font-size:11px;font-weight:700;color:var(--txt2);letter-spacing:.04em;text-transform:uppercase}
 input[type=text],input[type=date],input[type=number],input[type=password],input[type=month],select,textarea{
@@ -122,70 +122,73 @@ input[type=text],input[type=date],input[type=number],input[type=password],input[
   border-radius:var(--r-sm);font-size:13px;color:var(--txt);font-family:var(--font-sans);outline:none;transition:border-color .15s,box-shadow .15s
 }
 input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,108,247,.12)}
+input.err-field{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(220,38,38,.1)!important}
+select option{background:var(--white)}
 textarea{resize:vertical;min-height:50px}
 .date-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .date-pair .fg{margin-bottom:0}
 
-/* ── address search ── */
-.addr-wrap{position:relative}
-.addr-row{display:flex;gap:7px;align-items:flex-end}
+/* address */
+.addr-wrap{display:flex;flex-direction:column;gap:6px}
+.addr-row{display:flex;gap:6px;align-items:stretch}
 .addr-row input{flex:1}
-.addr-row .btn{flex-shrink:0;height:36px}
-.addr-modal{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--white);border:1.5px solid var(--border-strong);border-radius:var(--r);box-shadow:var(--shadow-md);z-index:200;overflow:hidden}
-.addr-modal.open{display:block}
-.addr-modal iframe{width:100%;height:380px;border:none;display:block}
-.addr-modal-hdr{padding:8px 12px;background:var(--bg-soft);border-bottom:1px solid var(--border);font-size:11px;font-weight:700;color:var(--txt2);display:flex;justify-content:space-between;align-items:center}
+/* kakao iframe overlay */
+.addr-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9000;align-items:center;justify-content:center}
+.addr-overlay.open{display:flex}
+.addr-overlay-box{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-md);width:min(480px,90vw)}
+.addr-overlay-hdr{padding:10px 14px;background:var(--bg-soft);border-bottom:1.5px solid var(--border);font-size:12px;font-weight:700;color:var(--txt2);display:flex;justify-content:space-between;align-items:center}
+.addr-overlay-hdr span{color:var(--blue)}
+.addr-overlay iframe{width:100%;height:360px;border:none;display:block}
 
-/* ── office toggle ── */
+/* office toggle */
 .otgl{display:flex;border:1.5px solid var(--border-strong);border-radius:var(--r-sm);overflow:hidden}
 .otgl button{flex:1;padding:7px 6px;border:none;background:var(--white);color:var(--txt2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font-sans);transition:all .12s}
 .otgl button:hover{background:var(--bg-soft)}
 .otgl button.a-bs{background:var(--teal-lt);color:var(--teal)}
 .otgl button.a-se{background:var(--blue-lt);color:var(--blue)}
 
-/* ── buttons ── */
+/* buttons */
 .btn{padding:8px 16px;border-radius:var(--r-sm);font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--border-strong);background:var(--white);color:var(--txt);font-family:var(--font-sans);transition:all .12s;display:inline-flex;align-items:center;gap:5px}
-.btn:hover{background:var(--bg-soft);border-color:var(--border-strong)}
+.btn:hover{background:var(--bg-soft)}
 .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.primary:hover{background:#2a5ae0}
 .btn.success{background:var(--teal);color:#fff;border-color:var(--teal)}.btn.success:hover{background:#0c8f6e}
 .btn.danger{color:var(--red);border-color:var(--red-md)}.btn.danger:hover{background:var(--red-lt)}
-.btn.sm{padding:5px 11px;font-size:11px}
+.btn.sm{padding:5px 10px;font-size:11px}
 
-/* ── section title ── */
 .sec-title{font-size:11px;font-weight:700;color:var(--txt3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px}
 .sec-title::after{content:'';flex:1;height:1.5px;background:var(--border)}
-
-/* ── return info box ── */
-.ret-info{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:11px 13px;font-size:12px;color:var(--txt2);margin-bottom:12px;min-height:60px}
-
-/* ── empty ── */
+.ret-info{background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:11px 13px;font-size:12px;color:var(--txt2);margin-bottom:12px;min-height:62px}
 .empty{text-align:center;padding:2rem;color:var(--txt3);font-size:13px}
 
-/* ── setup ── */
+/* setup */
 .setup-wrap{max-width:460px;margin:2rem auto}
-.setup-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:26px;box-shadow:var(--shadow-md)}
-.setup-card h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--navy)}
-.setup-card p{font-size:13px;color:var(--txt2);margin-bottom:16px;line-height:1.7}
+.setup-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:26px;box-shadow:var(--sh-md)}
 .step{display:flex;gap:10px;margin-bottom:12px;font-size:12px;color:var(--txt2);line-height:1.6}
 .step-n{width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-
-/* ── members ── */
 .mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}
 .mem-item{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--bg-soft);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:12px;font-weight:500}
-
-/* ── scrollbar ── */
-::-webkit-scrollbar{width:5px;height:5px}
-::-webkit-scrollbar-track{background:var(--bg-soft)}
-::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg-soft)}::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
 </style>
+
+<!-- 카카오 주소 overlay (position:fixed 대신 min-height로 in-flow) -->
+<div style="position:relative">
+  <div id="addr-overlay" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:9000;min-height:400px;align-items:flex-start;justify-content:center;padding-top:40px">
+    <div style="background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-md);width:100%;max-width:480px">
+      <div style="padding:10px 14px;background:var(--bg-soft);border-bottom:1.5px solid var(--border);font-size:12px;font-weight:700;color:var(--txt2);display:flex;justify-content:space-between;align-items:center">
+        <span id="addr-overlay-title" style="color:var(--blue)">주소 검색</span>
+        <button class="btn sm" onclick="closeAddr()"><i class="ti ti-x" aria-hidden="true"></i> 닫기</button>
+      </div>
+      <iframe id="addr-iframe" src="" title="카카오 주소 검색" style="width:100%;height:360px;border:none;display:block"></iframe>
+    </div>
+  </div>
 
 <div class="app">
   <!-- Setup -->
   <div id="setup-screen" style="display:none;padding:20px;background:var(--bg-page);min-height:580px">
     <div class="setup-wrap">
       <div class="setup-card">
-        <h3><i class="ti ti-database" aria-hidden="true"></i> JSONBin 연결 설정</h3>
-        <p>팀 전원이 실시간으로 같은 데이터를 공유합니다. 최초 1회만 설정하면 됩니다.</p>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px;color:var(--navy)"><i class="ti ti-database" aria-hidden="true"></i> JSONBin 연결 설정</h3>
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:16px;line-height:1.7">팀 전원이 실시간으로 같은 데이터를 공유합니다. 최초 1회만 설정하면 됩니다.</p>
         <div class="step"><div class="step-n">1</div><div><a href="https://jsonbin.io/login" style="color:var(--blue)">jsonbin.io</a>에서 무료 계정 생성 → Master Key 복사</div></div>
         <div class="step"><div class="step-n">2</div><div>Master Key 입력 후 "Bin 생성" 클릭 → Bin ID 자동 발급</div></div>
         <div class="step"><div class="step-n">3</div><div>팀원은 Bin ID + Master Key 두 값만 입력하면 동기화 완료</div></div>
@@ -221,7 +224,6 @@ textarea{resize:vertical;min-height:50px}
     </div>
 
     <div class="content">
-
       <!-- 현황 -->
       <div id="tab-dashboard" class="section active">
         <div class="stat-row">
@@ -233,11 +235,11 @@ textarea{resize:vertical;min-height:50px}
         <div class="office-row">
           <div class="office-block">
             <div class="office-hdr bs"><i class="ti ti-map-pin" aria-hidden="true"></i>부산 오피스</div>
-            <div class="chips" id="busan-chips"></div>
+            <div class="card-grid-area" id="busan-cards"></div>
           </div>
           <div class="office-block">
             <div class="office-hdr se"><i class="ti ti-map-pin" aria-hidden="true"></i>서울 오피스</div>
-            <div class="chips" id="seoul-chips"></div>
+            <div class="card-grid-area" id="seoul-cards"></div>
           </div>
         </div>
         <div class="sec-title">현재 대여 중</div>
@@ -247,7 +249,6 @@ textarea{resize:vertical;min-height:50px}
       <!-- 불출/반납 -->
       <div id="tab-checkout" class="section">
         <div class="two-col">
-          <!-- 불출 -->
           <div class="panel">
             <div class="panel-hdr ph-out"><i class="ti ti-arrow-up-right" aria-hidden="true"></i>카드 불출</div>
             <div class="panel-body">
@@ -256,33 +257,28 @@ textarea{resize:vertical;min-height:50px}
               <div class="fg" style="margin-bottom:8px">
                 <label>출장 기간</label>
                 <div class="date-pair">
-                  <div class="fg"><label style="font-size:10px">출발일</label><input type="date" id="co-from"></div>
-                  <div class="fg"><label style="font-size:10px">복귀일</label><input type="date" id="co-to"></div>
+                  <div class="fg"><label style="font-size:10px">출발일</label><input type="date" id="co-from" onchange="validateDates()"></div>
+                  <div class="fg"><label style="font-size:10px">복귀일</label><input type="date" id="co-to" onchange="validateDates()"></div>
                 </div>
+                <div id="date-warn" style="display:none;margin-top:6px;padding:7px 10px;background:var(--red-lt);border:1px solid var(--red-md);border-radius:var(--r-xs);font-size:12px;color:var(--red);font-weight:600"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 출발일이 복귀일보다 이후일 수 없습니다.</div>
               </div>
+              <!-- 출발지 -->
               <div class="fg">
-                <label>출발지 주소</label>
+                <label>출발지</label>
                 <div class="addr-wrap">
                   <div class="addr-row">
-                    <input type="text" id="co-from-addr" placeholder="주소 검색..." readonly onclick="openAddr('from')">
-                    <button class="btn sm primary" onclick="openAddr('from')"><i class="ti ti-search" aria-hidden="true"></i> 검색</button>
-                  </div>
-                  <div class="addr-modal" id="addr-modal-from">
-                    <div class="addr-modal-hdr"><span>출발지 주소 검색</span><button class="btn sm" onclick="closeAddr('from')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
-                    <iframe id="addr-iframe-from" src="" title="카카오 주소 검색 - 출발지"></iframe>
+                    <input type="text" id="co-from-addr" placeholder="직접 입력하거나 검색 버튼 클릭">
+                    <button class="btn sm primary" onclick="openAddr('from')" title="카카오 주소 검색"><i class="ti ti-search" aria-hidden="true"></i></button>
                   </div>
                 </div>
               </div>
+              <!-- 도착지 -->
               <div class="fg">
-                <label>도착지 주소</label>
+                <label>도착지</label>
                 <div class="addr-wrap">
                   <div class="addr-row">
-                    <input type="text" id="co-to-addr" placeholder="주소 검색..." readonly onclick="openAddr('to')">
-                    <button class="btn sm primary" onclick="openAddr('to')"><i class="ti ti-search" aria-hidden="true"></i> 검색</button>
-                  </div>
-                  <div class="addr-modal" id="addr-modal-to">
-                    <div class="addr-modal-hdr"><span>도착지 주소 검색</span><button class="btn sm" onclick="closeAddr('to')"><i class="ti ti-x" aria-hidden="true"></i></button></div>
-                    <iframe id="addr-iframe-to" src="" title="카카오 주소 검색 - 도착지"></iframe>
+                    <input type="text" id="co-to-addr" placeholder="직접 입력하거나 검색 버튼 클릭">
+                    <button class="btn sm primary" onclick="openAddr('to')" title="카카오 주소 검색"><i class="ti ti-search" aria-hidden="true"></i></button>
                   </div>
                 </div>
               </div>
@@ -290,7 +286,6 @@ textarea{resize:vertical;min-height:50px}
               <button class="btn primary" onclick="doCheckout()" style="width:100%;justify-content:center">불출 처리</button>
             </div>
           </div>
-          <!-- 반납 -->
           <div class="panel">
             <div class="panel-hdr ph-ret"><i class="ti ti-arrow-down-left" aria-hidden="true"></i>카드 반납</div>
             <div class="panel-body">
@@ -321,15 +316,12 @@ textarea{resize:vertical;min-height:50px}
           <button class="btn sm" onclick="exportCSV()"><i class="ti ti-download" aria-hidden="true"></i> CSV</button>
         </div>
         <div class="tbl-wrap">
-          <table>
-            <thead><tr>
-              <th style="width:72px">카드</th><th style="width:55px">팀원</th>
-              <th style="width:52px">구분</th><th style="width:62px">오피스</th>
-              <th style="width:130px">출장 기간</th><th>출발지 → 도착지</th>
-              <th style="width:55px">상태</th>
-            </tr></thead>
-            <tbody id="log-tbody"></tbody>
-          </table>
+          <table><thead><tr>
+            <th style="width:72px">카드</th><th style="width:55px">팀원</th>
+            <th style="width:52px">구분</th><th style="width:62px">오피스</th>
+            <th style="width:130px">출장 기간</th><th>출발지 → 도착지</th>
+            <th style="width:55px">상태</th>
+          </tr></thead><tbody id="log-tbody"></tbody></table>
         </div>
       </div>
 
@@ -345,7 +337,7 @@ textarea{resize:vertical;min-height:50px}
           <div class="panel-body">
             <p style="font-size:12px;color:var(--txt3);margin-bottom:10px">카드별 해당 월 하이패스 청구 금액을 입력하세요.</p>
             <div id="billing-rows"></div>
-            <button class="btn sm" onclick="addBillingRow()" style="margin-top:8px"><i class="ti ti-plus" aria-hidden="true"></i> 행 추가</button>
+            <button class="btn sm" onclick="addBillingRow()"><i class="ti ti-plus" aria-hidden="true"></i> 행 추가</button>
           </div>
         </div>
         <div id="report-output"></div>
@@ -354,94 +346,85 @@ textarea{resize:vertical;min-height:50px}
       <!-- 설정 -->
       <div id="tab-settings" class="section">
         <div class="sec-title">카드 관리</div>
-        <div class="panel" style="margin-bottom:18px">
-          <div class="panel-body">
-            <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
-              <input type="text" id="new-card-id" placeholder="예) HI-011" style="width:120px">
-              <div class="otgl" id="nco" style="width:140px">
-                <button class="a-bs" onclick="setNco('busan',this)">부산</button>
-                <button onclick="setNco('seoul',this)">서울</button>
-              </div>
-              <button class="btn primary" onclick="addCard()"><i class="ti ti-plus" aria-hidden="true"></i> 추가</button>
+        <div class="panel" style="margin-bottom:18px"><div class="panel-body">
+          <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
+            <input type="text" id="new-card-id" placeholder="예) HI-011" style="width:120px">
+            <div class="otgl" id="nco" style="width:140px">
+              <button class="a-bs" onclick="setNco('busan',this)">부산</button>
+              <button onclick="setNco('seoul',this)">서울</button>
             </div>
-            <div id="settings-card-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:7px"></div>
+            <button class="btn primary" onclick="addCard()"><i class="ti ti-plus" aria-hidden="true"></i> 추가</button>
           </div>
-        </div>
+          <div id="settings-card-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:7px"></div>
+        </div></div>
         <div class="sec-title">팀원 관리</div>
-        <div class="panel" style="margin-bottom:18px">
-          <div class="panel-body">
-            <div style="display:flex;gap:8px;margin-bottom:14px">
-              <input type="text" id="new-member" placeholder="팀원 이름" style="flex:1">
-              <button class="btn primary" onclick="addMember()"><i class="ti ti-plus" aria-hidden="true"></i> 추가</button>
-            </div>
-            <div class="mem-grid" id="member-list"></div>
+        <div class="panel" style="margin-bottom:18px"><div class="panel-body">
+          <div style="display:flex;gap:8px;margin-bottom:14px">
+            <input type="text" id="new-member" placeholder="팀원 이름" style="flex:1">
+            <button class="btn primary" onclick="addMember()"><i class="ti ti-plus" aria-hidden="true"></i> 추가</button>
           </div>
-        </div>
+          <div class="mem-grid" id="member-list"></div>
+        </div></div>
         <div class="sec-title">API 연결 정보</div>
-        <div class="panel">
-          <div class="panel-body" style="font-size:12px;color:var(--txt2);display:flex;flex-direction:column;gap:6px">
-            <div>Bin ID: <code id="info-binid" style="font-family:var(--font-mono);color:var(--blue);font-size:12px">—</code></div>
-            <div>마지막 동기화: <span id="info-sync">—</span></div>
-          </div>
-        </div>
+        <div class="panel"><div class="panel-body" style="font-size:12px;color:var(--txt2);display:flex;flex-direction:column;gap:6px">
+          <div>Bin ID: <code id="info-binid" style="font-family:var(--font-mono);color:var(--blue);font-size:12px">—</code></div>
+          <div>마지막 동기화: <span id="info-sync">—</span></div>
+        </div></div>
       </div>
-
     </div>
   </div>
 </div>
+</div><!-- /position:relative wrapper -->
 
 <script>
-/* ── 카카오 주소 검색 iframe HTML ── */
+/* ── 카카오 주소 iframe HTML ── */
 const KAKAO_HTML=`<!DOCTYPE html><html><head><meta charset="utf-8">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"><\/script>
-</head><body style="margin:0;padding:0">
-<div id="wrap" style="width:100%;height:380px;"></div>
-<script>
-new daum.Postcode({
-  oncomplete:function(d){
-    var addr=d.roadAddress||d.jibunAddress;
-    window.parent.postMessage({type:'kakao-addr',address:addr},'*');
-  },
-  width:'100%',height:'380px',
-  theme:{bgColor:'#f8f9fc',searchBgColor:'#3b6cf7',contentBgColor:'#ffffff',pageBgColor:'#f8f9fc',textColor:'#111827',queryTextColor:'#ffffff'}
-}).embed(document.getElementById('wrap'));
-<\/script></body></html>`;
+</head><body style="margin:0;padding:0;overflow:hidden">
+<div id="w" style="width:100%;height:360px"></div>
+<script>new daum.Postcode({oncomplete:function(d){window.parent.postMessage({type:'kakao-addr',address:d.roadAddress||d.jibunAddress},'*')},width:'100%',height:'360px',theme:{bgColor:'#f6f8fd',searchBgColor:'#3b6cf7',contentBgColor:'#fff',pageBgColor:'#f6f8fd',textColor:'#111827',queryTextColor:'#fff'}}).embed(document.getElementById('w'));<\/script></body></html>`;
 
 let addrTarget=null;
-
-function openAddr(target){
-  addrTarget=target;
-  const modal=document.getElementById('addr-modal-'+target);
-  const iframe=document.getElementById('addr-iframe-'+target);
-  if(!iframe.src||iframe.src==='about:blank'||iframe.src===''){
+function openAddr(t){
+  addrTarget=t;
+  document.getElementById('addr-overlay-title').textContent=t==='from'?'출발지 주소 검색':'도착지 주소 검색';
+  const iframe=document.getElementById('addr-iframe');
+  if(!iframe._loaded){
     const blob=new Blob([KAKAO_HTML],{type:'text/html'});
     iframe.src=URL.createObjectURL(blob);
+    iframe._loaded=true;
   }
-  modal.classList.add('open');
+  document.getElementById('addr-overlay').style.display='flex';
 }
-function closeAddr(target){
-  document.getElementById('addr-modal-'+target).classList.remove('open');
+function closeAddr(){
+  document.getElementById('addr-overlay').style.display='none';
   addrTarget=null;
 }
 window.addEventListener('message',function(e){
-  if(e.data&&e.data.type==='kakao-addr'){
-    if(addrTarget){
-      document.getElementById('co-'+(addrTarget==='from'?'from':'to')+'-addr').value=e.data.address;
-      closeAddr(addrTarget);
-    }
+  if(e.data&&e.data.type==='kakao-addr'&&addrTarget){
+    document.getElementById('co-'+(addrTarget==='from'?'from':'to')+'-addr').value=e.data.address;
+    closeAddr();
   }
 });
-document.addEventListener('click',function(e){
-  ['from','to'].forEach(t=>{
-    const m=document.getElementById('addr-modal-'+t);
-    if(m&&m.classList.contains('open')&&!m.contains(e.target)){
-      const btn=document.querySelector(`[onclick="openAddr('${t}')"]`);
-      if(!btn||!btn.contains(e.target)) closeAddr(t);
-    }
-  });
-});
 
-/* ── Storage ── */
+/* ── 날짜 유효성 ── */
+function validateDates(){
+  const f=document.getElementById('co-from').value;
+  const t=document.getElementById('co-to').value;
+  const warn=document.getElementById('date-warn');
+  if(f&&t&&f>t){
+    warn.style.display='block';
+    document.getElementById('co-from').classList.add('err-field');
+    document.getElementById('co-to').classList.add('err-field');
+    return false;
+  }
+  warn.style.display='none';
+  document.getElementById('co-from').classList.remove('err-field');
+  document.getElementById('co-to').classList.remove('err-field');
+  return true;
+}
+
+/* ── Storage & API ── */
 const LS='hipass_cfg_v5';
 const DEF_MEMBERS=['전정호','윤수아','송도현','최형욱','서승','강민정','남윤화','정지형','서재혁','박세준','최상호','오지윤','유인환','허지원','김영은','공주민','위보라','최경민','이지수','박성우','박재완','김승훈'];
 const DEF_CARDS=[
@@ -457,33 +440,19 @@ const DEF_CARDS=[
   {id:'HI-010',office:'seoul',inUse:false,user:null,checkoutId:null},
 ];
 let apiKey='',binId='',cards=[],members=[],logs=[];
-let retOff='busan',nco='busan';
-let poll=null;
+let retOff='busan',nco='busan',poll=null;
 
 function gcfg(){try{return JSON.parse(localStorage.getItem(LS)||'{}')}catch{return{}}}
 function scfg(c){localStorage.setItem(LS,JSON.stringify(c))}
+function show(s){document.getElementById('setup-screen').style.display=s==='setup'?'block':'none';document.getElementById('main-screen').style.display=s==='main'?'block':'none';}
+function resetSetup(){stopPoll();show('setup');}
+function setSS(state,msg){document.getElementById('sync-dot').className='dot'+(state==='ok'?'':state==='err'?' err':' spin');document.getElementById('sync-status').textContent=msg;}
 
 function start(){
   const c=gcfg();
-  if(c.apiKey&&c.binId){
-    apiKey=c.apiKey;binId=c.binId;
-    show('main');
-    document.getElementById('info-binid').textContent=binId;
-    fetchData(true);startPoll();
-  } else show('setup');
+  if(c.apiKey&&c.binId){apiKey=c.apiKey;binId=c.binId;show('main');document.getElementById('info-binid').textContent=binId;fetchData(true);startPoll();}
+  else show('setup');
 }
-function show(s){
-  document.getElementById('setup-screen').style.display=s==='setup'?'block':'none';
-  document.getElementById('main-screen').style.display=s==='main'?'block':'none';
-}
-function resetSetup(){stopPoll();show('setup');}
-
-function setSS(state,msg){
-  const d=document.getElementById('sync-dot');
-  d.className='dot'+(state==='ok'?'':state==='err'?' err':' spin');
-  document.getElementById('sync-status').textContent=msg;
-}
-
 async function initBin(){
   const key=document.getElementById('setup-key').value.trim();
   const bid=document.getElementById('setup-binid').value.trim();
@@ -494,13 +463,9 @@ async function initBin(){
   try{
     const r=await fetch('https://api.jsonbin.io/v3/b',{method:'POST',headers:{'Content-Type':'application/json','X-Master-Key':key,'X-Bin-Name':'hipass-mgr'},body:JSON.stringify({cards:DEF_CARDS,members:DEF_MEMBERS,logs:[]})});
     const d=await r.json();
-    if(d.metadata?.id){
-      binId=d.metadata.id;scfg({apiKey:key,binId});
-      cards=DEF_CARDS.map(c=>({...c}));members=[...DEF_MEMBERS];logs=[];
-      document.getElementById('info-binid').textContent=binId;
-      show('main');render();startPoll();
-    } else msg.textContent='실패: '+JSON.stringify(d);
-  } catch(e){msg.textContent='오류: '+e.message;}
+    if(d.metadata?.id){binId=d.metadata.id;scfg({apiKey:key,binId});cards=DEF_CARDS.map(c=>({...c}));members=[...DEF_MEMBERS];logs=[];document.getElementById('info-binid').textContent=binId;show('main');render();startPoll();}
+    else msg.textContent='실패: '+JSON.stringify(d);
+  }catch(e){msg.textContent='오류: '+e.message;}
 }
 async function loadExisting(){
   const key=document.getElementById('setup-key').value.trim()||apiKey;
@@ -511,13 +476,9 @@ async function loadExisting(){
   try{
     const r=await fetch(`https://api.jsonbin.io/v3/b/${bid}/latest`,{headers:{'X-Master-Key':key}});
     const d=await r.json();
-    if(d.record){
-      apiKey=key;binId=bid;scfg({apiKey:key,binId:bid});
-      cards=d.record.cards||[];members=d.record.members||[];logs=d.record.logs||[];
-      document.getElementById('info-binid').textContent=binId;
-      show('main');render();startPoll();
-    } else msg.textContent='연결 실패: '+JSON.stringify(d);
-  } catch(e){msg.textContent='오류: '+e.message;}
+    if(d.record){apiKey=key;binId=bid;scfg({apiKey:key,binId:bid});cards=d.record.cards||[];members=d.record.members||[];logs=d.record.logs||[];document.getElementById('info-binid').textContent=binId;show('main');render();startPoll();}
+    else msg.textContent='연결 실패: '+JSON.stringify(d);
+  }catch(e){msg.textContent='오류: '+e.message;}
 }
 async function fetchData(sh){
   if(!apiKey||!binId)return;
@@ -525,25 +486,16 @@ async function fetchData(sh){
   try{
     const r=await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`,{headers:{'X-Master-Key':apiKey}});
     const d=await r.json();
-    if(d.record){
-      cards=d.record.cards||[];members=d.record.members||[];logs=d.record.logs||[];
-      const n=new Date();
-      document.getElementById('sync-time').textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-      document.getElementById('info-sync').textContent=n.toLocaleString('ko-KR');
-      setSS('ok','실시간 동기화 중');render();
-    } else setSS('err','데이터 오류');
-  } catch{setSS('err','연결 실패');}
+    if(d.record){cards=d.record.cards||[];members=d.record.members||[];logs=d.record.logs||[];const n=new Date();document.getElementById('sync-time').textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});document.getElementById('info-sync').textContent=n.toLocaleString('ko-KR');setSS('ok','실시간 동기화 중');render();}
+    else setSS('err','데이터 오류');
+  }catch{setSS('err','연결 실패');}
 }
 async function pushData(){
-  if(!apiKey||!binId)return;
-  setSS('spin','저장 중...');
+  if(!apiKey||!binId)return;setSS('spin','저장 중...');
   try{
     await fetch(`https://api.jsonbin.io/v3/b/${binId}`,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':apiKey},body:JSON.stringify({cards,members,logs})});
-    const n=new Date();
-    document.getElementById('sync-time').textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    document.getElementById('info-sync').textContent=n.toLocaleString('ko-KR');
-    setSS('ok','실시간 동기화 중');render();
-  } catch{setSS('err','저장 실패');}
+    const n=new Date();document.getElementById('sync-time').textContent=n.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});document.getElementById('info-sync').textContent=n.toLocaleString('ko-KR');setSS('ok','실시간 동기화 중');render();
+  }catch{setSS('err','저장 실패');}
 }
 function startPoll(){poll=setInterval(()=>fetchData(false),30000);}
 function stopPoll(){if(poll)clearInterval(poll);}
@@ -563,27 +515,47 @@ function render(){
   const rm=document.getElementById('report-month');if(rm&&!rm.value){const n=new Date();rm.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}`;}
 }
 
+/* ── 카드 타일 렌더 ── */
+function renderCardTile(c){
+  if(c.inUse){
+    return `<div class="hcard used">
+      <div class="hcard-pill">대여중</div>
+      <div class="hcard-id">${c.id}</div>
+      <div class="hcard-icon"><i class="ti ti-credit-card-off" aria-hidden="true"></i></div>
+      <div class="hcard-user">${c.user||''}</div>
+      <div class="hcard-stripe"></div>
+    </div>`;
+  }
+  const cls=c.office==='busan'?'av-bs':'av-se';
+  return `<div class="hcard ${cls}">
+    <div class="hcard-pill">사용가능</div>
+    <div class="hcard-id">${c.id}</div>
+    <div class="hcard-icon"><i class="ti ti-credit-card" aria-hidden="true"></i></div>
+    <div class="hcard-user"></div>
+    <div class="hcard-stripe"></div>
+  </div>`;
+}
+
 function renderDash(){
   const iu=cards.filter(c=>c.inUse);
-  const bF=cards.filter(c=>c.office==='busan'&&!c.inUse);
-  const sF=cards.filter(c=>c.office==='seoul'&&!c.inUse);
   document.getElementById('st-total').textContent=cards.length;
   document.getElementById('st-inuse').textContent=iu.length;
-  document.getElementById('st-busan').textContent=bF.length;
-  document.getElementById('st-seoul').textContent=sF.length;
+  document.getElementById('st-busan').textContent=cards.filter(c=>c.office==='busan'&&!c.inUse).length;
+  document.getElementById('st-seoul').textContent=cards.filter(c=>c.office==='seoul'&&!c.inUse).length;
+
   ['busan','seoul'].forEach(o=>{
-    const el=document.getElementById(o+'-chips');
+    const el=document.getElementById(o+'-cards');
     const oc=cards.filter(c=>c.office===o);
-    el.innerHTML=oc.length?oc.map(c=>`<span class="chip ${c.inUse?'used':'f-'+o}">${c.id}${c.inUse?` ↑${c.user}`:''}</span>`).join(''):'<span style="font-size:12px;color:var(--txt3)">카드 없음</span>';
+    el.innerHTML=oc.length?oc.map(c=>renderCardTile(c)).join(''):'<span style="font-size:12px;color:var(--txt3)">카드 없음</span>';
   });
+
   const aLogs=logs.filter(l=>l.type==='out'&&!l.returned).slice().reverse();
   const al=document.getElementById('active-list');
   if(!aLogs.length){al.innerHTML='<div class="empty"><i class="ti ti-check-circle" aria-hidden="true" style="font-size:22px;color:var(--green);display:block;margin-bottom:6px"></i>대여 중인 카드 없음</div>';return;}
   al.innerHTML=`<div class="tbl-wrap"><table>
-    <thead><tr><th style="width:72px">카드</th><th style="width:58px">팀원</th><th style="width:65px">오피스</th><th style="width:140px">출장 기간</th><th>출발지 → 도착지</th><th style="width:60px">처리</th></tr></thead>
+    <thead><tr><th style="width:72px">카드</th><th style="width:58px">팀원</th><th style="width:65px">오피스</th><th style="width:145px">출장 기간</th><th>출발지 → 도착지</th><th style="width:60px">처리</th></tr></thead>
     <tbody>${aLogs.map(l=>`<tr>
-      <td><span class="badge out">${l.cardId}</span></td>
-      <td>${l.member}</td>
+      <td><span class="badge out">${l.cardId}</span></td><td>${l.member}</td>
       <td><span class="badge ${l.office==='busan'?'bs':'se'}">${l.office==='busan'?'부산':'서울'}</span></td>
       <td style="font-size:11px">${l.dateFrom||l.date||''}${l.dateTo?' ~ '+l.dateTo:''}</td>
       <td style="font-size:11px">${l.addrFrom||''}${l.addrTo?' → '+l.addrTo:''}</td>
@@ -618,14 +590,15 @@ function updateRetInfo(){
   el.innerHTML=`<div style="display:grid;gap:4px">
     <div>담당: <strong>${log.member}</strong></div>
     <div>출장 기간: <strong>${log.dateFrom||log.date||''}${log.dateTo?' ~ '+log.dateTo:''}</strong></div>
-    <div>경로: <strong>${log.addrFrom||''}${log.addrTo?' → '+log.addrTo:''}</strong></div>
+    <div>경로: <strong style="font-size:11px">${log.addrFrom||''}${log.addrTo?' → '+log.addrTo:''}</strong></div>
   </div>`;
 }
 
-function setRetOff(o,btn){retOff=o;document.querySelectorAll('#ret-otgl button').forEach(b=>{b.className='';});btn.className='a-'+o.slice(0,2);}
-function setNco(o,btn){nco=o;document.querySelectorAll('#nco button').forEach(b=>{b.className='';});btn.className='a-'+o.slice(0,2);}
+function setRetOff(o,btn){retOff=o;document.querySelectorAll('#ret-otgl button').forEach(b=>{b.className='';});btn.className='a-'+(o==='busan'?'bs':'se');}
+function setNco(o,btn){nco=o;document.querySelectorAll('#nco button').forEach(b=>{b.className='';});btn.className='a-'+(o==='busan'?'bs':'se');}
 
 function doCheckout(){
+  if(!validateDates())return;
   const cardId=document.getElementById('co-card').value;
   const member=document.getElementById('co-member').value;
   const dateFrom=document.getElementById('co-from').value;
@@ -692,8 +665,7 @@ function addBillingRow(){
   const div=document.createElement('div');
   div.style.cssText='display:grid;grid-template-columns:110px 1fr 1fr 30px;gap:7px;margin-bottom:7px;align-items:center';
   div.innerHTML=`<select style="width:100%">${cards.map(c=>`<option value="${c.id}">${c.id}</option>`).join('')}</select>
-    <input type="number" placeholder="금액(원)">
-    <input type="text" placeholder="비고">
+    <input type="number" placeholder="금액(원)"><input type="text" placeholder="비고">
     <button class="btn sm danger" onclick="this.parentElement.remove()"><i class="ti ti-x" aria-hidden="true"></i></button>`;
   area.appendChild(div);
 }
@@ -703,7 +675,7 @@ function generateReport(){
   if(!month){alert('기준 월을 선택하세요.');return;}
   const bRows=document.querySelectorAll('#billing-rows > div');
   const billing={};
-  bRows.forEach(r=>{const s=r.querySelector('select');const inp=r.querySelectorAll('input');if(s&&inp[0]?.value)billing[s.value]={amount:parseInt(inp[0].value)||0,note:inp[1]?.value||''};});
+  bRows.forEach(r=>{const s=r.querySelector('select');const inp=r.querySelectorAll('input');if(s&&inp[0]?.value)billing[s.value]={amount:parseInt(inp[0].value)||0};});
   const outLogs=logs.filter(l=>(l.dateFrom||l.date)?.startsWith(month)&&l.type==='out');
   const summary=cards.map(c=>{
     const outs=outLogs.filter(l=>l.cardId===c.id);
@@ -712,7 +684,7 @@ function generateReport(){
     let st='ok';
     if(bAmt>0&&outs.length===0)st='err';
     else if(bAmt>0&&un>0)st='warn';
-    return {card:c.id,office:c.office,cnt:outs.length,bAmt,un,mems:[...new Set(outs.map(l=>l.member))],st};
+    return{card:c.id,office:c.office,cnt:outs.length,bAmt,un,mems:[...new Set(outs.map(l=>l.member))],st};
   });
   const issues=summary.filter(r=>r.st!=='ok');
   const tot=summary.reduce((s,r)=>s+r.bAmt,0);
@@ -723,9 +695,7 @@ function generateReport(){
           <div style="font-size:11px;color:var(--txt3);margin-top:3px">생성: ${new Date().toLocaleDateString('ko-KR')}</div></div>
         <div style="text-align:right;font-size:12px;color:var(--txt2)">카드사 청구 합계<br><strong style="font-size:16px;color:var(--blue)">${tot.toLocaleString()}원</strong></div>
       </div>
-      ${issues.length
-        ?`<div style="padding:9px 16px;background:var(--amber-lt);border-bottom:1.5px solid var(--amber-md);font-size:12px;font-weight:600;color:var(--amber)"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 검토 필요 ${issues.length}건</div>`
-        :`<div style="padding:9px 16px;background:var(--green-lt);border-bottom:1.5px solid var(--green-md);font-size:12px;font-weight:600;color:var(--green)"><i class="ti ti-check" aria-hidden="true"></i> 이상 없음</div>`}
+      ${issues.length?`<div style="padding:9px 16px;background:var(--amber-lt);border-bottom:1.5px solid var(--amber-md);font-size:12px;font-weight:600;color:var(--amber)"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 검토 필요 ${issues.length}건</div>`:`<div style="padding:9px 16px;background:var(--green-lt);border-bottom:1.5px solid var(--green-md);font-size:12px;font-weight:600;color:var(--green)"><i class="ti ti-check" aria-hidden="true"></i> 이상 없음</div>`}
       <table style="table-layout:fixed">
         <thead><tr><th style="width:75px">카드</th><th style="width:65px">오피스</th><th style="width:52px">불출</th><th>사용자</th><th style="width:90px">청구금액</th><th style="width:58px">미반납</th><th style="width:52px">상태</th></tr></thead>
         <tbody>${summary.map(r=>`<tr>
@@ -751,7 +721,7 @@ function exportCSV(){
 function exportReport(){
   const el=document.getElementById('report-output');
   if(!el.innerHTML.trim()){alert('먼저 리포트를 생성하세요.');return;}
-  const html=`<html><head><meta charset="utf-8"><title>하이패스 리포트</title><style>body{font-family:sans-serif;padding:2rem;font-size:13px;color:#111;background:#f4f6fb}table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden}th,td{border:1px solid #e2e6f0;padding:8px 11px;text-align:left}th{background:#f8f9fc;font-size:11px;font-weight:700}.badge{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}.ok{background:#ecfdf5;color:#16a34a}.warn{background:#fffbeb;color:#d97706}.err{background:#fef2f2;color:#dc2626}.bs{background:#e6f7f2;color:#0ea882}.se{background:#eef2ff;color:#3b6cf7}</style></head><body>${el.innerHTML}</body></html>`;
+  const html=`<html><head><meta charset="utf-8"><title>하이패스 리포트</title><style>body{font-family:sans-serif;padding:2rem;font-size:13px;color:#111;background:#f0f3fa}table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden}th,td{border:1px solid #dde3f0;padding:8px 11px;text-align:left}th{background:#f6f8fd;font-size:11px;font-weight:700}.badge{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}.ok{background:#ecfdf5;color:#16a34a}.warn{background:#fffbeb;color:#d97706}.err{background:#fef2f2;color:#dc2626}.bs{background:#e4f7f1;color:#0ea882}.se{background:#eef2ff;color:#3b6cf7}</style></head><body>${el.innerHTML}</body></html>`;
   const blob=new Blob([html],{type:'text/html'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hipass_report.html';a.click();
 }
@@ -773,18 +743,9 @@ function renderSettings(){
     <div class="mem-item"><span>${m}</span><button class="btn sm danger" onclick="removeMember('${m}')"><i class="ti ti-x" aria-hidden="true"></i></button></div>`).join('');
 }
 function toggleOffice(id){const c=cards.find(x=>x.id===id);if(!c||c.inUse)return;c.office=c.office==='busan'?'seoul':'busan';pushData();}
-function addCard(){
-  const v=document.getElementById('new-card-id').value.trim().toUpperCase();
-  if(!v)return;if(cards.find(c=>c.id===v)){alert('이미 존재합니다.');return;}
-  cards.push({id:v,office:nco,inUse:false,user:null,checkoutId:null});
-  document.getElementById('new-card-id').value='';pushData();
-}
+function addCard(){const v=document.getElementById('new-card-id').value.trim().toUpperCase();if(!v)return;if(cards.find(c=>c.id===v)){alert('이미 존재합니다.');return;}cards.push({id:v,office:nco,inUse:false,user:null,checkoutId:null});document.getElementById('new-card-id').value='';pushData();}
 function removeCard(id){if(!confirm(`${id} 삭제?`))return;cards=cards.filter(c=>c.id!==id);pushData();}
-function addMember(){
-  const v=document.getElementById('new-member').value.trim();
-  if(!v)return;if(members.includes(v)){alert('이미 존재합니다.');return;}
-  members.push(v);document.getElementById('new-member').value='';pushData();
-}
+function addMember(){const v=document.getElementById('new-member').value.trim();if(!v)return;if(members.includes(v)){alert('이미 존재합니다.');return;}members.push(v);document.getElementById('new-member').value='';pushData();}
 function removeMember(n){if(!confirm(`${n} 삭제?`))return;members=members.filter(m=>m!==n);pushData();}
 
 start();
